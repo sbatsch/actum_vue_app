@@ -1,9 +1,9 @@
 <template>
-  <div class="recipes-show">
+  <div class="questions-show">
     <div class="row">
       <div class="col-md-6">
         <h2 class="text-center">{{ question.category }}</h2>
-        <h4 class="text-center"> {{ question.difficulty_level }}</h4>
+        <h4 class="text-center">{{ question.difficulty_level }}</h4>
 
         <div class="card text-left mb-4">
           <div class="card-header my-header">
@@ -27,7 +27,7 @@
           <div class="card-body">
             <p class="card-text">
               <ol>
-                <li v-for="direction in question.description">{{ description }}</li>
+                <li>{{ question.description }}</li>
               </ol>
             </p>
           </div>
@@ -36,10 +36,10 @@
         <div class="card-body">
           <p class="card-text">
             <ul>
-              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_a }}</li>
-              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_b }}</li>
-              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_c }}</li>
-              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_d }}</li>
+              <p class="btn btn-info m-2" >{{ question.answer_a }}</p>
+              <p class="btn btn-info m-2" >{{ question.answer_b }}</p>
+              <p class="btn btn-info m-2" >{{ question.answer_c }}</p>
+              <p class="btn btn-info m-2" >{{ question.answer_d }}</p>
             </ul>
           </p>
         </div>
@@ -49,18 +49,13 @@
         </div>
       </div>
       <div class="col-md-6">
-        <img class="img-fluid w-100 mt-5" v-bind:src="question.image_url" v-bind:alt="question.id">
       </div>
     </div>
-    
-  <div>
-    <h1>{{question.description}}</h1>
   </div>
 </template>
 
 <style>
 </style>
-
 
 <script>
 var axios = require('axios');
@@ -79,7 +74,7 @@ export default {
         answer_c: "",
         answer_d: "",
         true_false: ""
-        }
+      }
     };
   },
   created: function() {
