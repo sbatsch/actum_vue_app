@@ -31,15 +31,15 @@
               </ol>
             </p>
           </div>
-        </div>
-
+        
+</div>
         <div class="card-body">
           <p class="card-text">
             <ul>
-              <p class="btn btn-info m-2" >{{ question.answer_a }}</p>
-              <p class="btn btn-info m-2" >{{ question.answer_b }}</p>
-              <p class="btn btn-info m-2" >{{ question.answer_c }}</p>
-              <p class="btn btn-info m-2" >{{ question.answer_d }}</p>
+              <p v-bind:class="{'text-success': question.answer_key === chosen_answer && question.answer_key === question.answer_a}" class="btn btn-info m-2" v-on:click="checkAnswer(question.answer_a)">{{ question.answer_a }}</p>
+              <p v-bind:class="{'text-success': question.answer_key === chosen_answer && question.answer_key === question.answer_b}" class="btn btn-info m-2" v-on:click="checkAnswer(question.answer_b)">{{ question.answer_b }}</p>
+              <p v-bind:class="{'text-success': question.answer_key === chosen_answer && question.answer_key === question.answer_c}" class="btn btn-info m-2" v-on:click="checkAnswer(question.answer_c)">{{ question.answer_c }}</p>
+              <p v-bind:class="{'text-success': question.answer_key === chosen_answer && question.answer_key === question.answer_d}" class="btn btn-info m-2" v-on:click="checkAnswer(question.answer_d)">{{ question.answer_d }}</p>
             </ul>
           </p>
         </div>
@@ -73,8 +73,9 @@ export default {
         answer_b: "",
         answer_c: "",
         answer_d: "",
-        true_false: ""
-      }
+        true_false: "",
+      },
+      chosen_answer: ""
     };
   },
   created: function() {
@@ -91,9 +92,18 @@ export default {
         .then(response => {
           this.$router.push("/");
         });
+    },
+    checkAnswer: function(answerString) {
+      this.chosen_answer = answerString;
+      // if(this.question.answer_key === this.question["answer_" + letter]) {
+      //   document.getElementById("answer_" + letter).style.color = "green";
+      // } else {
+      //    document.getElementById("answer_" + letter).style.color = "red";
+      // }
     }
   }
 };
+
 </script>
 
 
