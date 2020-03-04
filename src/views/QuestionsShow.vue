@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div class="recipes-show">
     <div class="row">
       <div class="col-md-6">
@@ -54,11 +55,17 @@
     </div>
     
     
+=======
+  <div>
+    <h1>{{question.description}}</h1>
+   
+>>>>>>> 1462954ad08635dffd6663524f28b509115a171c
   </div>
 </template>
 
 <style>
 </style>
+
 
 <script>
 var axios = require('axios');
@@ -69,15 +76,23 @@ export default {
       question: {
         id: "",
         description: "",
+<<<<<<< HEAD
         category: "",
         difficulty level: "",
+=======
+        difficulty_level: "",
+>>>>>>> 1462954ad08635dffd6663524f28b509115a171c
         answer_key: "",
         answer_a: "",
         answer_b: "",
         answer_c: "",
         answer_d: "",
+<<<<<<< HEAD
         true_false: "",
         }
+=======
+        true_false: ""
+>>>>>>> 1462954ad08635dffd6663524f28b509115a171c
       }
     };
   },
@@ -101,12 +116,9 @@ export default {
 </script>
 
 
-   t.text "description"
-    t.string "category"
-    t.integer "difficulty_level"
-    t.string "answer_key"
-    t.string "answer_a"
-    t.string "answer_b"
-    t.string "answer_c"
-    t.string "answer_d"
-    t.boolean "true_false"
+
+
+
+
+
+
