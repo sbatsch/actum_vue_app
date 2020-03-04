@@ -2,50 +2,54 @@
   <div class="recipes-show">
     <div class="row">
       <div class="col-md-6">
-        <h2 class="text-center">{{ question.description }}</h2>
-        <h4 class="text-center">Prep Time: {{ question.category }}</h4>
+        <h2 class="text-center">{{ question.category }}</h2>
+        <h4 class="text-center"> {{ question.difficulty_level }}</h4>
 
         <div class="card text-left mb-4">
           <div class="card-header my-header">
             <ul class="nav nav-tabs card-header-tabs">
               <li class="nav-item">
-                <span class="nav-link active">Questions</span>
+                <span class="nav-link active">Current Question: </span>
               </li>
             </ul>
           </div>
-          <div class="card-body">
-            <p class="card-text">
-              <ul>
-                <li v-for="ingredient in recipe.formatted.ingredients">{{ ingredient }}</li>
-              </ul>
-            </p>
-          </div>
+
         </div>
 
         <div class="card text-left mb-4">
           <div class="card-header my-header">
             <ul class="nav nav-tabs card-header-tabs">
               <li class="nav-item">
-                <span class="nav-link active">Directions</span>
+                <span class="nav-link active"></span>
               </li>
             </ul>
           </div>
           <div class="card-body">
             <p class="card-text">
               <ol>
-                <li v-for="direction in recipe.formatted.directions">{{ direction }}</li>
+                <li v-for="direction in question.description">{{ description }}</li>
               </ol>
             </p>
           </div>
         </div>
 
+        <div class="card-body">
+          <p class="card-text">
+            <ul>
+              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_a }}</li>
+              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_b }}</li>
+              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_c }}</li>
+              <li class="btn btn-info m-2" v-bind:to="[NEED ANSWERS URL]">{{ answer_d }}</li>
+            </ul>
+          </p>
+        </div>
+
         <div>
-          <router-link class="btn btn-info m-2" v-bind:to="'/recipes/' + recipe.id + '/edit'">Edit</router-link>
-          <button class="btn btn-info m-2" v-on:click="destroyRecipe()">Delete</button>
+          <router-link class="btn btn-info m-2" v-bind:to="'/questions/' + question.id + '/edit'">Edit</router-link>
         </div>
       </div>
       <div class="col-md-6">
-        <img class="img-fluid w-100 mt-5" v-bind:src="recipe.image_url" v-bind:alt="recipe.title">
+        <img class="img-fluid w-100 mt-5" v-bind:src="question.image_url" v-bind:alt="question.id">
       </div>
     </div>
     
@@ -62,29 +66,32 @@ var axios = require('axios');
 export default {
   data: function() {
     return {
-      recipe: {
+      question: {
         id: "",
-        title: "",
-        ingredients: "",
-        directions: "",
-        formatted: {
-          ingredients: [],
-          directions: []
+        description: "",
+        category: "",
+        difficulty level: "",
+        answer_key: "",
+        answer_a: "",
+        answer_b: "",
+        answer_c: "",
+        answer_d: "",
+        true_false: "",
         }
       }
     };
   },
   created: function() {
     axios
-      .get("/api/recipes/" + this.$route.params.id)
+      .get("/api/questions/" + this.$route.params.id)
       .then(response => {
-        this.recipe = response.data;
+        this.question = response.data;
       });
   },
   methods: {
-    destroyRecipe: function() {
+    destroyQuestion: function() {
       axios
-        .delete("/api/recipes/" + this.$route.params.id)
+        .delete("/api/questions/" + this.$route.params.id)
         .then(response => {
           this.$router.push("/");
         });
