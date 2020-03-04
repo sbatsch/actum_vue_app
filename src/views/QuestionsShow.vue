@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="recipes-show">
     <div class="row">
       <div class="col-md-6">
@@ -54,12 +53,8 @@
       </div>
     </div>
     
-    
-=======
   <div>
     <h1>{{question.description}}</h1>
-   
->>>>>>> 1462954ad08635dffd6663524f28b509115a171c
   </div>
 </template>
 
@@ -76,24 +71,15 @@ export default {
       question: {
         id: "",
         description: "",
-<<<<<<< HEAD
         category: "",
-        difficulty level: "",
-=======
         difficulty_level: "",
->>>>>>> 1462954ad08635dffd6663524f28b509115a171c
         answer_key: "",
         answer_a: "",
         answer_b: "",
         answer_c: "",
         answer_d: "",
-<<<<<<< HEAD
-        true_false: "",
-        }
-=======
         true_false: ""
->>>>>>> 1462954ad08635dffd6663524f28b509115a171c
-      }
+        }
     };
   },
   created: function() {
